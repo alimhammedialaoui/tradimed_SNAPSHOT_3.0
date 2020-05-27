@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+}
+
+.wrapper .wrapper-vertical {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/*-----------------------------------------------------------sidebar---------------------------------------------------------------------------------------*/
+
+.wrapper .sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.wrapper .sidebar img {
+    box-sizing: border-box;
+    display: block;
+    float: none;
+    position: static;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 15px;
+    background-color: #f5f5f5;
+}
+
+.wrapper .sidebar .nav {
+    list-style-type: none;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 2px solid #f5f5f5;
+}
+
+
+.wrapper .sidebar .nav li a {
+    display: block;
+    text-decoration: none;
+    color: steelblue;
+    padding: 12px 16px;
+}
+
+.wrapper .sidebar .nav li a .fas {
+    width: 30px;
+    float: right;
+    font-size: 20px;
+}
+
+.wrapper .sidebar .nav li a .fab {
+    width: 28px;
+    float: right;
+    font-size: 20px;
+}
+
+.wrapper .sidebar .nav li a:hover:not(.active) {
+    color: white;
+    background-color: steelblue;
+}
+
+.wrapper .sidebar .nav a.active {
+    color: white;
+    background-color: rgb(69, 161, 57);
+}
+
+/*-----------------------------------------------------------main containt---------------------------------------------------------------------------------------*/
+
+.wrapper .maincontaint {
+    width: 100%;
+    margin-left: 250px;
+}
+
+.wrapper .maincontaint .titleBar {
+
+    color: white;
+    padding: 20px;
+    background-image: linear-gradient(rgb(69, 161, 57), rgba(69, 161, 57, 0.7));
+    text-align: center;
+
+}
+
+.wrapper .maincontaint .main {
+    text-align: center;
+    width: 90%;
+    box-shadow: 0.5px 0.5px 10px #9e9e9e;
+    border-radius: 10px;
+    margin: 20px auto 10px;
+}
+
+.wrapper .maincontaint .main .header {
+    padding: 20px;
+    text-align: center;
+}
+
+.wrapper .maincontaint .main .header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0 80%;
+    border-radius: 10px;
+    filter: blur(1px);
+}
+
+.wrapper .maincontaint .main .header h1 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #577284;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: Helvetica Neue, sans-serif;
+}
+
+.wrapper .maincontaint .main .description {
+    text-align: left;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    font-family: "Arial Narrow", sans-serif;
+    width: 96.7%;
+    background-image: linear-gradient(to right, rgb(69, 161, 57), whitesmoke);
+
+}
+
+.wrapper .maincontaint .main .description .text {
+    margin-left: 1%;
+    background: white;
+    padding: 1rem;
+    border-width: 3px;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .description span {
+    color: dodgerblue;
+}
+
+/*-----------------------------------------------------------main form---------------------------------------------------------------------------------------*/
+
+.wrapper .maincontaint .wrapper-vertical .main .form {
+    background-color: white;
+    padding: 20px;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .input {
+    float: left;
+    width: 45%;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #e6eef8;
+    border-radius: 10px;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .output {
+    float: right;
+    background-color: #e6eef8;
+    width: 45%;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form input[type=text], select, textarea {
+    width: 90%;
+    margin: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form label {
+    padding: 12px;
+    display: inline-block;
+    color: darkblue;
+    font-size: larger;
+    background-color: transparent;
+    float: left;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .row button {
+    background-color: #428bca;
+    color: white;
+    padding: 15px 20px;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    transition: 400ms;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .row button:hover {
+    background-color: #1e6caf;
+    transform: scale(0.98);
+    transition: 400ms;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .row button i {
+    float: left;
+}
+
+
+.wrapper .maincontaint .wrapper-vertical .main button {
+    background-color: #428bca;
+    color: white;
+    padding: 15px 20px;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    transition: 400ms;
+    position: relative;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main button:hover {
+    background-color: #1e6caf;
+    transform: scale(0.98);
+    transition: 400ms;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main button i {
+    float: left;
+}
+
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-25 {
+    width: 100%;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#arabicTitle {
+    float: right;
+    direction: rtl;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-25 input[type="file"] {
+    float: right;
+    display: none;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-25 button {
+    background-color: #428bca;
+    color: white;
+    padding: 8px 8px;
+    width: 120px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+#button_copy {
+    width: 190px;
+}
+
+
+
+.alert.success {
+    position: relative;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-bottom: 0px;
+    width: 40%;
+    margin-right: auto;
+    margin-left: 20px;
+    float: left;
+}
+
+.alert.checked {
+    position: relative;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-bottom: 0px;
+    width: 40%;
+    margin-right: auto;
+    margin-left: 20px;
+    float: left;
+}
+
+.closebtn {
+
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-25 button:hover {
+    background-color: #1e6caf;
+    transform: scale(0.98);
+    transition: 400ms;
+}
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-25 button i {
+    float: left;
+    padding: 0 4px;
+}
+
+
+.wrapper .maincontaint .wrapper-vertical .main .form .col-75 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+/* Clear floats after the columns */
+.wrapper .maincontaint .wrapper-vertical .main .form .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .wrapper .maincontaint .wrapper-vertical .main .form .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+/*-----------------------------------------------------------------------Footer---------------------------------------------------------------------------*/
+
+.footer {
+    background-color: #9e9e9e;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.footer div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer .flex {
+    display: flex;
+    margin: 0;
+}
+
+.footer .flex .flex-column {
+    display: inline-flex;
+
+}
+
+.footer .flex .flex-column a span {
+    color: dodgerblue;
+
+}
+
+.footer .flex .flex-column a {
+    text-decoration: none;
+}
+
+
+/*-----------------------------------------------------------------@media-----------------------------------------------------------------------*/
+
+
+@media (max-width: 800px) {
+    .wrapper .sidebar {
+        display: none;
+        width: 0;
+    }
+
+    .wrapper .maincontaint {
+        margin-left: 0px;
+    }
+}

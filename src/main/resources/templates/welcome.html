@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to Tradimed</title>
+    <!--    <link type="text/css" rel="stylesheet" th:href="@{/css/Style0.css}"/>-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/welcome.css}"/>
+    <script src="https://kit.fontawesome.com/423fa2e65b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar">
+<!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
+        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
+        <nav>
+            <ul class="nav">
+                <li><a class="active" th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
+                <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
+                </li>
+                <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
+                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <li><a th:href="@{/contact}">Contact and support <i style="width: 28px"
+                                                                    class="fas fa-envelope-open"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="maincontaint">
+        <div class="wrapper-vertical">
+            <div class="titleBar">
+                <h2 href="javascript:void(0)">Tradimed</h2>
+            </div>
+            <div class="main ">
+                <div class="header ">
+                    <img src="https://i.ibb.co/CmRMFZR/poster2.png"/>
+                    <h1>Welcome to the home page of Tradimed !</h1>
+                    <div class="getstarted">
+                        <br>
+                        <button class="btn btn-4 btn-sep icon-send"
+                                onclick="window.location.href='/prescriptions/showTools'">Get Started
+                        </button>
+                    </div>
+                </div>
+                <div class="description">
+                    <div class="text"><b>Tradimed</b> is a tool provided for doctors in order to make bilingual
+                        prescriptions for their patients.<br> It offers three main features as below :
+                    </div>
+                </div>
+                <div class="functionalities">
+                    <div class="card" onclick="this.classList.toggle('expanded')"><br>
+                        <img  src="https://i.ibb.co/3FTJ5ZL/translate.png">
+                        <div class="text1">
+                            <div class="text-content">
+                                <h1 class="title">Translator</h1>
+                                <div class="body-text">Make a Bilingual prescription</div>
+                            </div>
+                        </div>
+
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30">
+                            <path d="M5 30L50 5l45 25" fill="none" stroke="#000" stroke-width="5"/>
+                        </svg>
+                    </div>
+                    <div class="card" onclick="this.classList.toggle('expanded')"><br>
+                        <img  src="https://i.ibb.co/VDV8LJy/icon.png">
+                        <div class="text2">
+                            <div class="text-content">
+                                <h1 class="title">Spell Checker</h1>
+                                <div class="body-text">Gives you propositions for typo</div>
+                            </div>
+                        </div>
+
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30">
+                            <path d="M5 30L50 5l45 25" fill="none" stroke="#000" stroke-width="5"/>
+                        </svg>
+                    </div>
+                    <div class="card" onclick="this.classList.toggle('expanded')"><br>
+                        <img  src="https://i.ibb.co/L9gLBwf/pdf.png">
+                        <div class="text3">
+                            <div class="text-content">
+                                <h1 class="title">Generate PDF</h1>
+                                <div class="body-text">Export a PDF format</div>
+                            </div>
+                        </div>
+
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30">
+                            <path d="M5 30L50 5l45 25" fill="none" stroke="#000" stroke-width="5"/>
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+            <div class="flex">
+                <div class="flex-column">
+                    <a th:href="@{/team}"><span>About us</span></a>
+                </div>
+                <div class="flex-column">
+                    All Right Resereved ©
+                </div>
+                <div class="flex-column">
+                    <a th:href="@{/contact}"><span>Contact us</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+</html>
+
+
+<!--<div class="resp-table">-->
+<!--    <div class="resp-table-row">-->
+
+<!--    </div>-->
+<!--    <div class="resp-table-row">-->
+<!--        <div class=“table-body-cell”>-->
+<!--            This feature is on the menu-->
+<!--            "Prescription tool" menu. This allows you to perform a-->
+<!--            translation.The translation is certified by real doctors.The name of medicines is-->
+<!--            the right name-->
+<!--            as in the Medicines ditionnary.-->
+<!--        </div>-->
+<!--        <div class=“table-body-cell”>-->
+<!--            <img style="width: 200px;height: 200px;margin:60px 0"-->
+<!--                 th:src="@{/images/translate.png}">-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="resp-table-row">-->
+<!--        <div class=“table-body-cell”>-->
+<!--            In the Correction "Prescription tool"-->
+<!--            menu, use the corrector to correct your erroneous medical-->
+<!--            terms, based on the MeDictionary dictionary of MeDictionary. This feature brings you the three-->
+<!--            closest correct three medical terms available from the dictionary.-->
+<!--        </div>-->
+<!--        <div class=“table-body-cell”>-->
+<!--            <img style="width: 200px;height: 200px;margin:60px 0"-->
+<!--                 th:src="@{/images/icon.png}">-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+<!--<div class="Table">-->
+
+<!--    <div class="Heading">-->
+
+<!--    </div>-->
+<!--    <div class="Row">-->
+<!--        <div class="Cell" style="width: 650px">-->
+<!--            <p type="text" >This feature is on the menu-->
+<!--                "Prescription tool" menu. This allows you to perform a-->
+<!--                translation.The translation is certified by real doctors.The name of medicines is the-->
+<!--                right name-->
+<!--                as in the Medicines ditionnary.</p>-->
+<!--        </div>-->
+<!--        <div class="Cell">-->
+<!--            <img  th:src="@{/images/translate.png}">-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="Row">-->
+<!--        <div class="Cell">-->
+<!--            <img  th:src="@{/images/icon.png}">-->
+<!--        </div>-->
+<!--        <div class="Cell" style="width: 650px">-->
+<!--            <p type="text" >In the "Prescription tool"-->
+<!--                menu, use the corrector to correct your erroneous medical-->
+<!--                terms, based on the Tradimed  dictionary. This feature brings you the three-->
+<!--                closest correct three medical terms available from the dictionary.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="Row">-->
+<!--        <div class="Cell" style="width: 650px">-->
+<!--            <p type="text" >Generate PDF</p>-->
+<!--        </div>-->
+<!--        <div class="Cell">-->
+<!--            <img  style="width: 120px;height: 105px;position: relative;margin-top: 10px" th:src="@{/images/pdf.png}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<table class="tg" style="table-layout: fixed; width: 100%;height: 100px">-->
+<!--    <colgroup>-->
+<!--        <col style="width: 362.2px">-->
+<!--        <col style="width: 366.2px">-->
+<!--    </colgroup>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th class="tg-dirm" >This feature is on the menu "Prescription tool" menu. This allows you to-->
+<!--            perform a translation.The translation is certified by real doctors.The name of medicines is-->
+<!--            the right name as in the Medicines ditionnary.-->
+<!--        </th>-->
+<!--        <th class="tg-c3ow"><img-->
+<!--                th:src="@{/images/translate.png}"-->
+<!--                width="100" height="100"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td class="tg-c3ow" style="background-color: #9de0ad"><img-->
+<!--                th:src="@{/images/icon.png}"-->
+<!--                alt="Image" width="100" height="100"></td>-->
+<!--        <td class="tg-wp8o">In the "Prescription tool" menu, use the corrector to correct your erroneous-->
+<!--            medical terms, based on the Tradimed dictionary. This feature brings you the three closest-->
+<!--            correct three medical terms available from the dictionary.-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td class="tg-c3ow"><br><br>Generate PDF</td>-->
+<!--        <td class="tg-c3ow" style="background-color: #9de0ad"><img-->
+<!--                th:src="@{/images/pdf.png}"-->
+<!--                alt="Image" width="110" height="100"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->

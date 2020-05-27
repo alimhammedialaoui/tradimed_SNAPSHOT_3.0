@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact Us</title>
+    <link type="text/css" th:href="@{/css/contact.css}" rel="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/423fa2e65b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar">
+<!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
+        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
+        <nav>
+            <ul class="nav">
+                <li><a th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
+                <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
+                </li>
+                <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
+                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <li><a class="active" th:href="@{/contact}">Contact and support <i style="width: 28px"
+                                                                                   class="fas fa-envelope-open"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="maincontaint">
+        <div class="wrapper-vertical">
+            <div class="titleBar">
+                <h2>Tradimed</h2>
+            </div>
+
+            <div class="main">
+                <div class="header ">
+                    <img src="https://i.ibb.co/hgrDW5y/contact.jpg"/>
+                    <h1>Contact and Support</h1>
+                </div>
+                <div class="description">
+                    <div class="text"><b>Tradimed</b> provide for you alse a support to share your experience
+                        through this tool.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <div class="contact">
+
+                        </div>
+
+                        <img th:src="@{/images/img-01.webp}" >
+                    </div> <!-- -->
+                    <div class="column form">
+                        <form method="post" th:action="@{/messagePost}" th:object="${mes}" id="form">
+                            <label for="fname">Prénom*</label>
+                            <input type="text" id="fname" name="prenom" placeholder="Prénom.." th:field="*{prenom}"/>
+                            <label for="lname">Nom*</label>
+                            <input type="text" id="lname" name="nom" placeholder="Nom.." th:field="*{nom}"/>
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" placeholder="Email.." th:field="*{email}"/>
+                            <label for="subject">Message*</label>
+                            <textarea id="subject" name="subject" placeholder="Votre message.."
+                                      style="height:170px" th:field="*{message}"></textarea>
+                            <!--                    <h3 class="info">Votre message a bien été envoyé</h3>-->
+                            <!--                    <input type="submit" value="Submit" class="btn btn-4 btn-sep icon-send">-->
+                            <button class="btn btn-4 btn-sep icon-send">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="flex">
+                <div class="flex-column">
+                    <a th:href="@{/team}"><span>About us</span></a>
+                </div>
+                <div class="flex-column">
+                    All Right Resereved ©
+                </div>
+                <div class="flex-column">
+                    <a th:href="@{/contact}"><span>Contact us</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    const list = ["fname", "lname", "email", "subject"];
+
+    document.getElementById("form").onsubmit = function (c) {
+        c.preventDefault();
+        var formValid = true
+        list.forEach(e => {
+            var y = document.getElementById(e);
+            var x = y.value;
+            if (x === "") {
+                y.placeholder = "Champ important";
+                y.classList.add("form-error");
+
+                formValid = false
+            }
+
+        });
+        if (formValid) {
+            document.getElementById("form").submit();
+        }
+    }
+
+    document.getElementById("email").onchange = function (c) {
+        c.preventDefault();
+        var x = document.getElementById("email");
+        var value = x.value;
+        var array = value.split("@", 2);
+        if (array[1] === "") return false
+        else {
+            var rightside = array[1].split(".");
+            if (rightside.length === 1) {
+                alert("Email incorrect")
+            }
+        }
+        return true
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+/*#sidebar{
+    float: left;
+    background-color: rgb(245, 245, 245);
+    padding: 0px;
+    width: 17%;
+    line-height: 20px;
+    max-width: 250px;
+    min-width: 200px;
+    min-height: 800px;
+}
+
+#sidebar img{
+    box-sizing: border-box;
+    display: block;
+    float: none;
+    position: static;
+    max-width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 15px;
+    border: 2px solid gainsboro;
+    background-color: rgb(69, 161, 57);
+
+}
+
+#sidebar #menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 2px solid gainsboro;
+}*/
+
+#sidebar {
+
+    float: left;
+    background-color: #f5f5f5;
+    padding: 0px;
+    height: 100%;
+    width: 17%;
+    line-height: 20px;
+    bottom: 0;
+    max-width: 250px;
+    min-width: 200px;
+}
+
+#sidebar img {
+    box-sizing: border-box;
+    display: block;
+    float: none;
+    position: static;
+    max-width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 15px;
+    background-color: #f5f5f5;
+}
+
+#sidebar #menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 2px solid #f5f5f5;
+}
+
+
+#menu li a{
+    display: block;
+    text-decoration: none;
+    color: steelblue;
+    padding: 12px 16px;
+}
+
+#menu li a:hover:not(.active){
+    color: white;
+    background-color: steelblue;
+}
+
+#menu a.active{
+    color: white;
+    background-color:  rgb(69, 161, 57);
+}
+
+.rightContainer{
+    float: right;
+    width: 83.5%;
+}
+
+.rightContainer .titleBar{
+    background-color: rgb(69, 161, 57);
+    text-align: center;
+}
+
+.rightContainer .titleBar h2{
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.content{
+    float: left;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 95%;
+    border: 2px solid gainsboro;
+
+}
+
+.input{
+    float: left;
+    width: 45%;
+    padding: 20px;
+    margin-top: 100px;
+
+}
+
+.output{
+    float: right;
+    background-color: bisque;
+    width: 45%;
+    padding: 20px;
+}
+
+input[type=text], select, textarea {
+    width: 90%;
+    margin: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px;
+    display: inline-block;
+    color: darkblue;
+    font-size: larger;
+    background-color: transparent;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.col-25 {
+    width: 50%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+
