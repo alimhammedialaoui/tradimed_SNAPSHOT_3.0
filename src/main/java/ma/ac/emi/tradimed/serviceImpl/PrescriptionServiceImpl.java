@@ -28,6 +28,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         Builder builder = new Builder();
         BuilderMed builderMed= new BuilderMed();
         //Translator translator = new Translator(builder.buildDictionary("src/main/resources/data/Fr-Dict.csv"),builder.buildDictionary("src/main/resources/data/Ar-Dict.csv"));
+
         Translator translator = new Translator(builder.buildDictionary("src/main/resources/data/Fr-Dict.csv"),builder.buildDictionary("src/main/resources/data/Ar-Dict.csv"),builderMed.buildDictionary("src/main/resources/data/Book1.csv"));
         System.out.println(translator.getTranslation(entry));
         return translator.getTranslation(entry);
