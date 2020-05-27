@@ -23,7 +23,7 @@
 	<repositories>
 		<repository>
 			<id>project.local</id>
-			<name>project</name>
+			<name>tradimed_SNAPSHOT_3.0</name>
 			<url>file:${project.basedir}/repo</url>
 		</repository>
 	</repositories>
