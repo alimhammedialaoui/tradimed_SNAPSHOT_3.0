@@ -6,6 +6,7 @@ import ma.ac.emi.tradimed.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +20,12 @@ public class PrescriptionRestController {
     private PrescriptionService service;
 
     @GetMapping("/corr/{str}")
-    public String correct(@PathVariable String str){
+    public String correct(@PathVariable String str) throws FileNotFoundException {
         return service.getCorrection(str);
     }
 
     @PostMapping("/correct")
-    public Prescription getCorrection(@RequestBody Prescription prescription){
+    public Prescription getCorrection(@RequestBody Prescription prescription) throws FileNotFoundException {
         String correction = service.getCorrection(prescription.getOriginalText());
         prescription.setCorrectedText(correction);
         return prescription;
