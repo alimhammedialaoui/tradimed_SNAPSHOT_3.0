@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restApi")
 @CrossOrigin
+@RequestMapping("/restApi")
 public class PrescriptionRestController {
 
     @Autowired
