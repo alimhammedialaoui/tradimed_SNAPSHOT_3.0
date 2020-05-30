@@ -7,7 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <script src="https://kit.fontawesome.com/423fa2e65b.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="thisreset()">
 <div class="wrapper">
     <div class="sidebar">
 <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
@@ -62,7 +62,7 @@
                                       style="height:170px" th:field="*{message}"></textarea>
                             <!--                    <h3 class="info">Votre message a bien été envoyé</h3>-->
                             <!--                    <input type="submit" value="Submit" class="btn btn-4 btn-sep icon-send">-->
-                            <button class="btn btn-4 btn-sep icon-send">Envoyer</button>
+                            <button class="btn btn-4 btn-sep icon-send" type="button" onclick="sendMail()">Envoyer</button>
                         </form>
                     </div>
                 </div>
@@ -86,8 +86,7 @@
 <script type="text/javascript">
     const list = ["fname", "lname", "email", "subject"];
 
-    document.getElementById("form").onsubmit = function (c) {
-        c.preventDefault();
+    function prevent() {
         var formValid = true
         list.forEach(e => {
             var y = document.getElementById(e);
@@ -100,9 +99,7 @@
             }
 
         });
-        if (formValid) {
-            document.getElementById("form").submit();
-        }
+        return formValid
     }
 
     document.getElementById("email").onchange = function (c) {
@@ -118,6 +115,41 @@
             }
         }
         return true
+    }
+
+    async function sendMail() {
+        if(prevent()) {
+            const URL = "http://localhost:8081"
+            const restapi = URL + "/feedback"
+            const footermail = "\n@Copyright 2020 Tradimed \n Ecole Mohammadia d'Ingénieurs"
+            const finmessage = "\n\n\n\n\n------------------------------------"
+            let mail = {
+                prenom: document.getElementById("fname").value,
+                nom: document.getElementById("lname").value,
+                email: document.getElementById("email").value,
+                message: " Email from: " + document.getElementById("email").value + "\n Message :\n " + document.getElementById("subject").value + finmessage + footermail,
+            }
+
+            let response = await fetch(restapi, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                },
+                body: JSON.stringify(mail)
+            })
+            alert("The message has been sent")
+            location.reload();
+        }
+
+    }
+
+    function thisreset() {
+
+        document.getElementById("form").reset()
+        const textareas = document.getElementsByTagName("textarea")
+        for (let i = 0; i < textareas.length; i++) {
+            textareas[i].value = ""
+        }
     }
 
 </script>
