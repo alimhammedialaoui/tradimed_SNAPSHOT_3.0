@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <!--    <meta charset="utf-8">-->
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Prescription tools</title>
     <link type="text/css" rel="stylesheet" th:href="@{/css/analyser.css}"/>
     <script src="https://kit.fontawesome.com/423fa2e65b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css">
-    <script src="arabic.js"></script>
+
 </head>
 <body onload="thisreset()">
 <div class="wrapper">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="description">
                     <div class="text">
-                        Write your text in the <b>Original text</b> area below and click in <b>Correct and Translate</b>
+                        Write your text in the <b>Original text</b> area below and click in <b>Translate</b>
                         to get the result:
                     </div>
                 </div>
@@ -60,7 +60,7 @@
 
                             </div>
                             <div class="col-75">
-                                <textarea id="originalText" th:field="*{originalText}" placeholder="Write something.."
+                                <textarea id="originalText" th:field="*{originalText}" placeholder="Write something or upload your text..."
                                           style="height:200px" spellcheck="false" oninput="changeHandler()"></textarea>
                             </div>
 
@@ -79,7 +79,7 @@
                                 <label for="lv">Propositions of Spell Checking</label>
                             </div>
                             <div class="col-75">
-                                <textarea id="lv" th:field="*{lvText}" placeholder="Levenshtein Corrector"
+                                <textarea id="lv" th:field="*{lvText}" placeholder="Propositions..."
                                           spellcheck="false"
                                 ></textarea>
                             </div>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-75">
 
-                                <textarea id="correctedText" th:field="*{correctedText}" placeholder="Text corrected.."
+                                <textarea id="correctedText" th:field="*{correctedText}" placeholder="Corrected text.."
                                           style="height:200px" spellcheck="false"></textarea>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             <div class="col-75">
                                 <textarea id="translatedText" style="direction: rtl;height:200px;font-size: 20px"
                                           onkeyup="setWordOrder(event)" th:field="*{translatedText}"
-                                          placeholder="النص المطرجم..." spellcheck="false"></textarea>
+                                          placeholder="النص المترجم..." spellcheck="false"></textarea>
                             </div>
 
 
