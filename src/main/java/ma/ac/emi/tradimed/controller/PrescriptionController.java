@@ -5,7 +5,6 @@ import ma.ac.emi.tradimed.entity.Prescription;
 import ma.ac.emi.tradimed.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,7 +43,7 @@ public class PrescriptionController {
         String translation = service.getTranslation(thePrescription.getOriginalText());
 
         //System.out.println(stringListHashMap.toString());
-        prescription.setLvText(stringListHashMap.toString());
+        //prescription.setLvText(stringListHashMap);
         prescription.setCorrectedText(correction);
         prescription.setTranslatedText(translation);
         return "analyser";

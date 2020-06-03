@@ -10,7 +10,7 @@
 <body onload="thisreset()">
 <div class="wrapper">
     <div class="sidebar">
-<!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
+        <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
         <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
         <nav>
             <ul class="nav">
@@ -33,8 +33,10 @@
 
             <div class="main">
                 <div class="header ">
-                    <img src="https://i.ibb.co/hgrDW5y/contact.jpg"/>
-                    <h1>Contact and Support</h1>
+                    <div style="position: relative;">
+                        <img src="https://i.ibb.co/hgrDW5y/contact.jpg"/>
+                        <h1 style="position: absolute;margin-top: 55px">Contact and Support</h1>
+                    </div>
                 </div>
                 <div class="description">
                     <div class="text"><b>Tradimed</b> provide for you alse a support to share your experience
@@ -47,7 +49,7 @@
 
                         </div>
 
-                        <img th:src="@{/images/img-01.webp}" >
+                        <img th:src="@{/images/img-01.webp}">
                     </div> <!-- -->
                     <div class="column form">
                         <form method="post" th:action="@{/messagePost}" th:object="${mes}" id="form">
@@ -62,7 +64,8 @@
                                       style="height:170px" th:field="*{message}"></textarea>
                             <!--                    <h3 class="info">Votre message a bien été envoyé</h3>-->
                             <!--                    <input type="submit" value="Submit" class="btn btn-4 btn-sep icon-send">-->
-                            <button class="btn btn-4 btn-sep icon-send" type="button" onclick="sendMail()">Envoyer</button>
+                            <button class="btn btn-4 btn-sep icon-send" type="button" onclick="sendMail()">Envoyer
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -118,7 +121,7 @@
     }
 
     async function sendMail() {
-        if(prevent()) {
+        if (prevent()) {
             const URL = "http://localhost:8081"
             const restapi = URL + "/feedback"
             const footermail = "\n@Copyright 2020 Tradimed \n Ecole Mohammadia d'Ingénieurs"

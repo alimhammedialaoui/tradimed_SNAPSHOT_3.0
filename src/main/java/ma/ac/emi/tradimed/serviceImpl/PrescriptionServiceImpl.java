@@ -42,8 +42,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     public HashMap<String ,List<String>> getListeErrones(String sequence, ReadFile file) throws IOException {
-        String med = ResourceUtils.getFile("classpath:data/LV.csv").toString();
-        String path="src/main/resources/data/LV.csv";
+        String med = ResourceUtils.getFile("classpath:data/Ar-Dict.csv").toString();
         return listeErrone(sequence, file, med);
     }
 

@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Prescription tools</title>
     <link type="text/css" rel="stylesheet" th:href="@{/css/analyser.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/static.css}"/>
     <script src="https://kit.fontawesome.com/423fa2e65b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
@@ -14,7 +15,7 @@
 <body onload="thisreset()">
 <div class="wrapper">
     <div class="sidebar">
-<!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
+        <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
         <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
         <nav>
             <ul class="nav">
@@ -36,8 +37,10 @@
             </div>
             <div class="main">
                 <div class="header ">
-                    <img src="https://i.ibb.co/KVjtT0w/notes.jpg"/>
-                    <h1>Prescription tools</h1>
+                    <div style="position: relative">
+                        <img src="https://i.ibb.co/KVjtT0w/notes.jpg"/>
+                        <h1 style="position: absolute;margin-top: 55px">Prescription tools</h1>
+                    </div>
                 </div>
                 <div class="description">
                     <div class="text">
@@ -46,7 +49,7 @@
                     </div>
                 </div>
 
-                <form  th:action="@{/prescriptions/translate}" th:object="${prescription}" method="post"
+                <form th:action="@{/prescriptions/translate}" th:object="${prescription}" method="post"
                       class="form" id="form" name="form">
                     <div class="input">
                         <div class="row">
@@ -60,14 +63,15 @@
 
                             </div>
                             <div class="col-75">
-                                <textarea id="originalText" th:field="*{originalText}" placeholder="Write something or upload your text..."
+                                <textarea id="originalText" th:field="*{originalText}"
+                                          placeholder="Write something or upload your text..."
                                           style="height:200px" spellcheck="false" oninput="changeHandler()"></textarea>
                             </div>
 
                         </div>
                         <div class="row">
                             <button id="button_submit" name="button" type="button"
-                                    onclick="thisSubmit()" >Translate
+                                    onclick="thisSubmit()">Translate
                             </button>
                             <div class="alert checked">
                                 <span class="closebtn">&times;</span>
@@ -141,8 +145,8 @@
 </body>
 <script type="text/javascript">
 
-    const URL= "http://localhost:8081"
-
+    //const URL = "http://localhost:8081"
+    const URL ="http://8675acfcd0a9.ngrok.io"
 
     function setWordOrder(e) {
         if (e.key === " ") {
@@ -160,7 +164,7 @@
     async function thisSubmit() {
         //document.getElementById("submit_translate").click();
         //translation
-        const trans = URL+"/restApi/translate"
+        const trans = URL + "/restApi/translate"
         let prescription = {
             originalText: document.getElementById("originalText").value,
             correctedText: '',
@@ -179,9 +183,9 @@
         document.getElementById("translatedText").value = resultTrans.translatedText
 
         //correction
-        const corr = URL+"/restApi/correct"
+        const corr = URL + "/restApi/correct"
 
-        let responseCorr= await fetch(corr, {
+        let responseCorr = await fetch(corr, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -214,6 +218,7 @@
         this.uploadText()
 
     }
+
     function uploadText() {
         document.getElementById("file").addEventListener("change", getFile)
     }
@@ -283,7 +288,7 @@
 
     /////////////sumbit LV/////////
     async function thissumbitLV() {
-        const newAction = URL+"/restApi/lv"
+        const newAction = URL + "/restApi/lv"
         let prescription = {
             originalText: document.getElementById("originalText").value,
             correctedText: '',
@@ -298,7 +303,30 @@
             body: JSON.stringify(prescription)
         })
         let result = await response.json()
-        document.getElementById("lv").value = result.lvText
+        let textlv = result.lvText
+        let json = JSON.parse(textlv)
+        console.log(json)
+        let text = ""
+        let keys = []
+        for (let key in json) {
+            keys.push(key)
+            if (Number.isInteger(parseInt(key)) || key === "") {
+                continue
+            }
+            if (json.hasOwnProperty(key)) {
+                text = text + key + " --> "
+                let array = json[key].slice(1, json[key].length - 1)
+                let prop = array.split(",")
+                for (let index in prop) {
+                    text = text + " " + prop[index]
+                }
+                text = text + "\n"
+            }
+        }
+        for (let e in keys) {
+
+        }
+        document.getElementById("lv").value = text
 
         const alert = document.getElementsByClassName("alert");
         alert[0].style.display = "block"
@@ -308,7 +336,7 @@
     }
 
     function changeHandler() {
-        if(document.getElementById("originalText").value!==""){
+        if (document.getElementById("originalText").value !== "") {
             thissumbitLV()
         }
     }

@@ -4,6 +4,8 @@ import ma.ac.emi.tradimed.LV.ReadFile;
 import ma.ac.emi.tradimed.entity.Prescription;
 import ma.ac.emi.tradimed.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
@@ -18,6 +20,7 @@ public class PrescriptionRestController {
 
     @Autowired
     private PrescriptionService service;
+
 
     @GetMapping("/corr/{str}")
     public String correct(@PathVariable String str) throws FileNotFoundException {
@@ -44,9 +47,15 @@ public class PrescriptionRestController {
     }
 
     @PostMapping("/lv")
-    public Prescription getLV(@RequestBody Prescription prescription) throws IOException {
+    public Prescription getLV(@RequestBody Prescription prescription) throws IOException, JSONException {
         HashMap<String, List<String>> stringListHashMap = service.getListeErrones(prescription.getOriginalText(),new ReadFile());
-        prescription.setLvText(stringListHashMap.toString());
+        JSONObject lvtext = new JSONObject();
+        for(String origin : stringListHashMap.keySet()){
+            lvtext.put(origin,stringListHashMap.get(origin));
+        }
+        //logger.info("LV :"+lvtext.toString());
+        prescription.setLvText(lvtext.toString());
+        //logger.info("LV :"+stringListHashMap.toString());
         return prescription;
     }
 

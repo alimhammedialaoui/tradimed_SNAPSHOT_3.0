@@ -8,8 +8,8 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="sidebar">
-<!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
+    <div class="sidebar invisible">
+        <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
         <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
         <nav>
             <ul class="nav">
@@ -25,13 +25,21 @@
     </div>
     <div class="maincontaint">
         <div class="wrapper-vertical">
-            <div class="titleBar">
+            <div class="titleBar" >
+                <div id="toggle" onclick="thistoggle()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <h2 href="javascript:void(0)">Tradimed</h2>
             </div>
             <div class="main ">
                 <div class="header ">
-                    <img src="https://i.ibb.co/CmRMFZR/poster2.png"/>
-                    <h1>Welcome to the home page of Tradimed !</h1>
+                    <div style="position: relative">
+                        <img src="https://i.ibb.co/CmRMFZR/poster2.png"/>
+                        <h1 style="position: absolute;margin-top: 55px">Welcome to the home page of Tradimed !</h1>
+                    </div>
+
                     <div class="getstarted">
                         <br>
                         <button class="btn btn-4 btn-sep icon-send"
@@ -46,7 +54,7 @@
                 </div>
                 <div class="functionalities">
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img  src="https://i.ibb.co/3FTJ5ZL/translate.png">
+                        <img src="https://i.ibb.co/3FTJ5ZL/translate.png">
                         <div class="text1">
                             <div class="text-content">
                                 <h1 class="title">Translator</h1>
@@ -59,7 +67,7 @@
                         </svg>
                     </div>
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img  src="https://i.ibb.co/VDV8LJy/icon.png">
+                        <img src="https://i.ibb.co/VDV8LJy/icon.png">
                         <div class="text2">
                             <div class="text-content">
                                 <h1 class="title">Spell Checker</h1>
@@ -72,7 +80,7 @@
                         </svg>
                     </div>
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img  src="https://i.ibb.co/L9gLBwf/pdf.png">
+                        <img src="https://i.ibb.co/L9gLBwf/pdf.png">
                         <div class="text3">
                             <div class="text-content">
                                 <h1 class="title">Generate PDF</h1>
@@ -106,6 +114,14 @@
 </div>
 
 </body>
+<script>
+
+    function thistoggle() {
+        document.getElementById("toggle").classList.toggle("sidebar")
+        console.log("hello")
+    }
+
+</script>
 
 
 </html>
