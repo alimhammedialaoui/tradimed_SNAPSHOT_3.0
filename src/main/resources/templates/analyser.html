@@ -145,8 +145,9 @@
 </body>
 <script type="text/javascript">
 
-    //const URL = "http://localhost:8081"
-    const URL ="http://8675acfcd0a9.ngrok.io"
+    const URL = "http://arabic.emi.ac.ma:8080/tradimed"
+    //const URL ="http://8675acfcd0a9.ngrok.io"
+
 
     function setWordOrder(e) {
         if (e.key === " ") {
@@ -293,8 +294,9 @@
             originalText: document.getElementById("originalText").value,
             correctedText: '',
             lvText: '',
-            translatedText: '',
+            translatedText: ''
         }
+        console.log(prescription)
         let response = await fetch(newAction, {
             method: 'POST',
             headers: {
@@ -303,6 +305,7 @@
             body: JSON.stringify(prescription)
         })
         let result = await response.json()
+        console.log("result="+result.lvText)
         let textlv = result.lvText
         let json = JSON.parse(textlv)
         console.log(json)

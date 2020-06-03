@@ -3,6 +3,8 @@ package ma.ac.emi.tradimed.restController;
 import ma.ac.emi.tradimed.LV.ReadFile;
 import ma.ac.emi.tradimed.entity.Prescription;
 import ma.ac.emi.tradimed.service.PrescriptionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -20,6 +22,8 @@ public class PrescriptionRestController {
 
     @Autowired
     private PrescriptionService service;
+
+    Logger logger= LoggerFactory.getLogger(PrescriptionRestController.class);
 
 
     @GetMapping("/corr/{str}")
