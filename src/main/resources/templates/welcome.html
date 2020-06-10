@@ -10,7 +10,7 @@
 <div class="wrapper">
     <div class="sidebar invisible">
         <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
-        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
+        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png" style="width: 230px;height: auto;margin:0 auto 0 auto;">
         <nav>
             <ul class="nav">
                 <li><a class="active" th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
@@ -25,7 +25,7 @@
     </div>
     <div class="maincontaint">
         <div class="wrapper-vertical">
-            <div class="titleBar" >
+            <div class="titleBar">
                 <div id="toggle" onclick="thistoggle()">
                     <span></span>
                     <span></span>
@@ -42,9 +42,12 @@
 
                     <div class="getstarted">
                         <br>
-                        <button class="btn btn-4 btn-sep icon-send"
-                                onclick="window.location.href='/tradimed/prescriptions/showTools'">Get Started
-                        </button>
+                        <a th:href="@{/prescriptions/showTools}">
+                            <button class="btn btn-4 btn-sep icon-send"
+                            >Get Started
+                            </button>
+                        </a>
+                        <!--                        onclick="window.location.href='/tradimed/prescriptions/showTools'"-->
                     </div>
                 </div>
                 <div class="description">
@@ -103,7 +106,7 @@
                     <a th:href="@{/team}"><span>About us</span></a>
                 </div>
                 <div class="flex-column">
-                    All Right Resereved ©
+                    All Rights Reserved ©
                 </div>
                 <div class="flex-column">
                     <a th:href="@{/contact}"><span>Contact us</span></a>
@@ -127,111 +130,3 @@
 </html>
 
 
-<!--<div class="resp-table">-->
-<!--    <div class="resp-table-row">-->
-
-<!--    </div>-->
-<!--    <div class="resp-table-row">-->
-<!--        <div class=“table-body-cell”>-->
-<!--            This feature is on the menu-->
-<!--            "Prescription tool" menu. This allows you to perform a-->
-<!--            translation.The translation is certified by real doctors.The name of medicines is-->
-<!--            the right name-->
-<!--            as in the Medicines ditionnary.-->
-<!--        </div>-->
-<!--        <div class=“table-body-cell”>-->
-<!--            <img style="width: 200px;height: 200px;margin:60px 0"-->
-<!--                 th:src="@{/images/translate.png}">-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="resp-table-row">-->
-<!--        <div class=“table-body-cell”>-->
-<!--            In the Correction "Prescription tool"-->
-<!--            menu, use the corrector to correct your erroneous medical-->
-<!--            terms, based on the MeDictionary dictionary of MeDictionary. This feature brings you the three-->
-<!--            closest correct three medical terms available from the dictionary.-->
-<!--        </div>-->
-<!--        <div class=“table-body-cell”>-->
-<!--            <img style="width: 200px;height: 200px;margin:60px 0"-->
-<!--                 th:src="@{/images/icon.png}">-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</div>-->
-
-
-<!--<div class="Table">-->
-
-<!--    <div class="Heading">-->
-
-<!--    </div>-->
-<!--    <div class="Row">-->
-<!--        <div class="Cell" style="width: 650px">-->
-<!--            <p type="text" >This feature is on the menu-->
-<!--                "Prescription tool" menu. This allows you to perform a-->
-<!--                translation.The translation is certified by real doctors.The name of medicines is the-->
-<!--                right name-->
-<!--                as in the Medicines ditionnary.</p>-->
-<!--        </div>-->
-<!--        <div class="Cell">-->
-<!--            <img  th:src="@{/images/translate.png}">-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="Row">-->
-<!--        <div class="Cell">-->
-<!--            <img  th:src="@{/images/icon.png}">-->
-<!--        </div>-->
-<!--        <div class="Cell" style="width: 650px">-->
-<!--            <p type="text" >In the "Prescription tool"-->
-<!--                menu, use the corrector to correct your erroneous medical-->
-<!--                terms, based on the Tradimed  dictionary. This feature brings you the three-->
-<!--                closest correct three medical terms available from the dictionary.</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="Row">-->
-<!--        <div class="Cell" style="width: 650px">-->
-<!--            <p type="text" >Generate PDF</p>-->
-<!--        </div>-->
-<!--        <div class="Cell">-->
-<!--            <img  style="width: 120px;height: 105px;position: relative;margin-top: 10px" th:src="@{/images/pdf.png}">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<!--<table class="tg" style="table-layout: fixed; width: 100%;height: 100px">-->
-<!--    <colgroup>-->
-<!--        <col style="width: 362.2px">-->
-<!--        <col style="width: 366.2px">-->
-<!--    </colgroup>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th class="tg-dirm" >This feature is on the menu "Prescription tool" menu. This allows you to-->
-<!--            perform a translation.The translation is certified by real doctors.The name of medicines is-->
-<!--            the right name as in the Medicines ditionnary.-->
-<!--        </th>-->
-<!--        <th class="tg-c3ow"><img-->
-<!--                th:src="@{/images/translate.png}"-->
-<!--                width="100" height="100"></th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td class="tg-c3ow" style="background-color: #9de0ad"><img-->
-<!--                th:src="@{/images/icon.png}"-->
-<!--                alt="Image" width="100" height="100"></td>-->
-<!--        <td class="tg-wp8o">In the "Prescription tool" menu, use the corrector to correct your erroneous-->
-<!--            medical terms, based on the Tradimed dictionary. This feature brings you the three closest-->
-<!--            correct three medical terms available from the dictionary.-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td class="tg-c3ow"><br><br>Generate PDF</td>-->
-<!--        <td class="tg-c3ow" style="background-color: #9de0ad"><img-->
-<!--                th:src="@{/images/pdf.png}"-->
-<!--                alt="Image" width="110" height="100"></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->

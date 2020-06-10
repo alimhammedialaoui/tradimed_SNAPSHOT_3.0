@@ -100,6 +100,7 @@
     box-shadow: 0.5px 0.5px 10px #9e9e9e;
     border-radius: 10px;
     margin: 20px auto 10px;
+
 }
 
 .wrapper .maincontaint .main .header {
@@ -152,8 +153,21 @@
     color: dodgerblue;
 }
 
+.contact-card{
+    width: 250px;
+    height: 200px;
+    background-color: #f2f2f2;
+    line-height: 50px;
+    padding: 20px;
+    text-align: center;
+    margin:10px auto 71px auto;
+    box-shadow: 0 0 10px rgba(57, 57, 57,0.8);
+}
 
 
+
+
+/*Pas de form - Ulterieurement*/
 /*-------------------------------------------------------------------------Form Message------------------------------------------------------------------------------*/
 
 
@@ -342,6 +356,7 @@ form{
     padding: 20px;
     text-align: center;
     bottom: 0;
+    height: 55px;
 }
 
 .footer div {

@@ -69,6 +69,8 @@ e.m.p.,حسب الوصفة
 ext.,خارجي
 fois/jour,مرات/يوم
 fois par jour,مرات في اليوم
+fois,مرات
+jour,اليوم
 G.,أيسر
 g,غرام
 gl,كبسولة
@@ -262,12 +264,12 @@ gélules,برشامة
 -,-
 :,:
 boites,علب
-mg,مليغرام
+mg,ملغ
 PELLICULÉ,مغلف
 AMPOULE,زجاجة
 INJECTABLE,قابل للحقن
 AMPOULES,زجاجات
-ML,ملليلتر
+ML,مل
 DE,من
 SÉCABLE,قابل للتبديل
 SOLUTION,المحلول

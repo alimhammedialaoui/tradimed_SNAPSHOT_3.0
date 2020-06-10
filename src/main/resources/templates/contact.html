@@ -11,7 +11,7 @@
 <div class="wrapper">
     <div class="sidebar">
         <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
-        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
+        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png" style="width: 230px;height: auto;margin:0 auto 0 auto;">
         <nav>
             <ul class="nav">
                 <li><a th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
@@ -30,57 +30,65 @@
             <div class="titleBar">
                 <h2>Tradimed</h2>
             </div>
-
             <div class="main">
                 <div class="header ">
                     <div style="position: relative;">
                         <img src="https://i.ibb.co/hgrDW5y/contact.jpg"/>
-                        <h1 style="position: absolute;margin-top: 55px">Contact and Support</h1>
+                        <h1 style="position: absolute;margin-top: 55px">Page Support</h1>
                     </div>
                 </div>
                 <div class="description">
-                    <div class="text"><b>Tradimed</b> provide for you alse a support to share your experience
-                        through this tool.
+                    <div class="text">We're here to Help you. Feel free to contact the mail below for support.
                     </div>
                 </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="contact">
-
-                        </div>
-
-                        <img th:src="@{/images/img-01.webp}">
-                    </div> <!-- -->
-                    <div class="column form">
-                        <form method="post" th:action="@{/messagePost}" th:object="${mes}" id="form">
-                            <label for="fname">Prénom*</label>
-                            <input type="text" id="fname" name="prenom" placeholder="Prénom.." th:field="*{prenom}"/>
-                            <label for="lname">Nom*</label>
-                            <input type="text" id="lname" name="nom" placeholder="Nom.." th:field="*{nom}"/>
-                            <label for="email">Email*</label>
-                            <input type="email" id="email" name="email" placeholder="Email.." th:field="*{email}"/>
-                            <label for="subject">Message*</label>
-                            <textarea id="subject" name="subject" placeholder="Votre message.."
-                                      style="height:170px" th:field="*{message}"></textarea>
-                            <!--                    <h3 class="info">Votre message a bien été envoyé</h3>-->
-                            <!--                    <input type="submit" value="Submit" class="btn btn-4 btn-sep icon-send">-->
-                            <button class="btn btn-4 btn-sep icon-send" type="button" onclick="sendMail()">Envoyer
-                            </button>
-                        </form>
+                <div class="contact-card">
+                    <div class="contact">
+                        <div class="name-contact"><b>BOUZOUBAA Karim</b></div>
+                        <div class="mail-contact"><a href="mailto:ouzoubaa@emi.ac.ma">bouzoubaa@emi.ac.ma</a></div>
+                        <div class="mail-contact"><a href="mailto:karimbouzoubaa@yahoo.com">karimbouzoubaa@yahoo.com</a></div>
                     </div>
                 </div>
+                <!--                <div class="row">-->
+                <!--                    <div class="column">-->
+                <!--                        <div class="contact">-->
+
+                <!--                        </div>-->
+
+                <!--                        <img th:src="@{/images/img-01.webp}">-->
+                <!--                    </div> &lt;!&ndash; &ndash;&gt;-->
+                <!--                    <div class="column form">-->
+                <!--                        <form method="post" th:action="@{/messagePost}" th:object="${mes}" id="form">-->
+                <!--                            <label for="fname">Prénom*</label>-->
+                <!--                            <input type="text" id="fname" name="prenom" placeholder="Prénom.." th:field="*{prenom}"/>-->
+                <!--                            <label for="lname">Nom*</label>-->
+                <!--                            <input type="text" id="lname" name="nom" placeholder="Nom.." th:field="*{nom}"/>-->
+                <!--                            <label for="email">Email*</label>-->
+                <!--                            <input type="email" id="email" name="email" placeholder="Email.." th:field="*{email}"/>-->
+                <!--                            <label for="subject">Message*</label>-->
+                <!--                            <textarea id="subject" name="subject" placeholder="Votre message.."-->
+                <!--                                      style="height:170px" th:field="*{message}"></textarea>-->
+                <!--                            &lt;!&ndash;                    <h3 class="info">Votre message a bien été envoyé</h3>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                    <input type="submit" value="Submit" class="btn btn-4 btn-sep icon-send">&ndash;&gt;-->
+                <!--                            <button class="btn btn-4 btn-sep icon-send" type="button" onclick="sendMail()">Envoyer-->
+                <!--                            </button>-->
+                <!--                        </form>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
+
             </div>
-        </div>
-        <div class="footer">
-            <div class="flex">
-                <div class="flex-column">
-                    <a th:href="@{/team}"><span>About us</span></a>
-                </div>
-                <div class="flex-column">
-                    All Right Resereved ©
-                </div>
-                <div class="flex-column">
-                    <a th:href="@{/contact}"><span>Contact us</span></a>
+            <div class="footer">
+                <div class="flex">
+                    <div class="flex-column">
+                        <a th:href="@{/team}"><span>About us</span></a>
+                    </div>
+                    <div class="flex-column">
+                        All Rights Reserved ©
+                    </div>
+                    <div class="flex-column">
+                        <a th:href="@{/contact}"><span>Contact us</span></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,7 +131,8 @@
     async function sendMail() {
         if (prevent()) {
             const URL = "http://arabic.emi.ac.ma:8080/tradimed"
-            const restapi = URL + "/feedback"
+            const URL2 = "http://localhost:8081"
+            const restapi = URL2 + "/feedback"
             const footermail = "\n@Copyright 2020 Tradimed \n Ecole Mohammadia d'Ingénieurs"
             const finmessage = "\n\n\n\n\n------------------------------------"
             let mail = {

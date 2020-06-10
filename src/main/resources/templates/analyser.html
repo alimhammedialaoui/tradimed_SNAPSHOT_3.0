@@ -16,7 +16,7 @@
 <div class="wrapper">
     <div class="sidebar">
         <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
-        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png">
+        <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png" style="width: 230px;height: auto;margin:0 auto 0 auto;">
         <nav>
             <ul class="nav">
                 <li><a th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
@@ -70,22 +70,43 @@
 
                         </div>
                         <div class="row">
+                            <div class="chargement">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                             <button id="button_submit" name="button" type="button"
                                     onclick="thisSubmit()">Translate
                             </button>
-                            <div class="alert checked">
-                                <span class="closebtn">&times;</span>
-                                <strong>Checked!</strong>
+                            <div class="sk-fading-circle">
+                                <div class="sk-circle1 sk-circle"></div>
+                                <div class="sk-circle2 sk-circle"></div>
+                                <div class="sk-circle3 sk-circle"></div>
+                                <div class="sk-circle4 sk-circle"></div>
+                                <div class="sk-circle5 sk-circle"></div>
+                                <div class="sk-circle6 sk-circle"></div>
+                                <div class="sk-circle7 sk-circle"></div>
+                                <div class="sk-circle8 sk-circle"></div>
+                                <div class="sk-circle9 sk-circle"></div>
+                                <div class="sk-circle10 sk-circle"></div>
+                                <div class="sk-circle11 sk-circle"></div>
+                                <div class="sk-circle12 sk-circle"></div>
                             </div>
                         </div>
+
                         <div class="row">
+
                             <div class="col-25">
                                 <label for="lv">Propositions of Spell Checking</label>
                             </div>
+
+                            <div class="alert checked" id="alert1">
+                                <span class="closebtn">&times;</span>
+                                <strong>Checked!</strong>
+                            </div>
                             <div class="col-75">
                                 <textarea id="lv" th:field="*{lvText}" placeholder="Propositions..."
-                                          spellcheck="false"
-                                ></textarea>
+                                          spellcheck="false"></textarea>
                             </div>
                         </div>
                     </div>
@@ -102,11 +123,17 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-25" id="arabicTitle">
                                 <label for="translatedText" style="direction: rtl"
                                        onkeyup="setWordOrder(event)">الوصفة</label>
                             </div>
+
                             <div class="col-75">
+                                <div class="alert success">
+                                    <span class="closebtn">&times;</span>
+                                    <strong>Copied!</strong>
+                                </div>
                                 <textarea id="translatedText" style="direction: rtl;height:200px;font-size: 20px"
                                           onkeyup="setWordOrder(event)" th:field="*{translatedText}"
                                           placeholder="النص المترجم..." spellcheck="false"></textarea>
@@ -118,10 +145,7 @@
                                 onclick="copyText();" download><i
                                 class="fas fa-copy"></i>Copy To ClipBoard
                         </button>
-                        <div class="alert success">
-                            <span class="closebtn">&times;</span>
-                            <strong>Copied!</strong>
-                        </div>
+
                     </div>
                 </form>
             </div>
@@ -133,7 +157,7 @@
                     <a th:href="@{/team}"><span>About us</span></a>
                 </div>
                 <div class="flex-column">
-                    All Right Resereved ©
+                    All Rights Reserved ©
                 </div>
                 <div class="flex-column">
                     <a th:href="@{/contact}"><span>Contact us</span></a>
@@ -147,7 +171,7 @@
 
     const URL = "http://arabic.emi.ac.ma:8080/tradimed"
     //const URL ="http://8675acfcd0a9.ngrok.io"
-
+    //const URL="http://localhost:8081"
 
     function setWordOrder(e) {
         if (e.key === " ") {
@@ -165,6 +189,7 @@
     async function thisSubmit() {
         //document.getElementById("submit_translate").click();
         //translation
+        document.getElementsByClassName("chargement")[0].style.display="unset"
         const trans = URL + "/restApi/translate"
         let prescription = {
             originalText: document.getElementById("originalText").value,
@@ -195,7 +220,9 @@
         })
         let resultCorr = await responseCorr.json()
         document.getElementById("correctedText").value = resultCorr.correctedText
-
+        if(resultTrans.length!==0 && resultCorr.length!==0){
+            document.getElementsByClassName("chargement")[0].style.display="none"
+        }
     }
 
     function thisGenerate() {
@@ -289,6 +316,7 @@
 
     /////////////sumbit LV/////////
     async function thissumbitLV() {
+        document.getElementsByClassName("sk-fading-circle")[0].style.display="unset"
         const newAction = URL + "/restApi/lv"
         let prescription = {
             originalText: document.getElementById("originalText").value,
@@ -325,17 +353,26 @@
                 }
                 text = text + "\n"
             }
-        }
-        for (let e in keys) {
+
+
 
         }
+
         document.getElementById("lv").value = text
-
+        if(text===""){
+            document.getElementsByClassName("alert")[0].style.backgroundColor="#4CAF50"
+        }else{
+            document.getElementsByClassName("alert")[0].style.backgroundColor="#ff9800"
+        }
         const alert = document.getElementsByClassName("alert");
         alert[0].style.display = "block"
         setTimeout(function () {
             alert[0].style.opacity = "1";
         }, 100)
+        if(textlv.length!==0){
+            document.getElementsByClassName("sk-fading-circle")[0].style.display="none"
+        }
+
     }
 
     function changeHandler() {
@@ -353,6 +390,9 @@
             textareas[i].value = ""
         }
     }
+
+
+
 
 
 </script>

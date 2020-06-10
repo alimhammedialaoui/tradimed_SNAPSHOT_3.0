@@ -1,11 +1,19 @@
 package ma.ac.emi.tradimed.utility;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 
 public class Translator{
+
+    Logger loggerFactory= LoggerFactory.getLogger(Translator.class);
+
 
     private final Map<String, String> dictionaryFr;
     private final Map<String, String> dictionaryAr;
@@ -33,7 +41,8 @@ public class Translator{
         String[] elementsParent = entry.split("\n");
 
         for (String ligne : elementsParent) {
-            String line= ligne.replaceAll("\\s+"," ");
+            String line= removeAccent(ligne).replaceAll("\\s+"," ");
+
             List<List<Integer>> list = new ArrayList<>();
             List<Integer> listIndex = new ArrayList<>();
             StringBuilder lineresult = new StringBuilder();
@@ -45,11 +54,12 @@ public class Translator{
             for (int j = 0; j < mots.size(); j++) {
                 isTranslated = false;
                 endsWithComma=false;
-                trad.append(mots.get(j));
+                trad.append(removeAccent(mots.get(j)));
+                //loggerFactory.info("Chaine a traduire : "+trad);
                 int counter = 0;
                 for (String origin : dictionaryAr.keySet()) {
                     counter++;
-                    if (trad.toString().toLowerCase().equals(origin.toLowerCase())) {
+                    if (trad.toString().toLowerCase().equals(removeAccent(origin).toLowerCase())) {
                         lineresult.append(dictionaryAr.get(origin));
                         if(endsWithComma){
                             lineresult.append("،").append(" ");
@@ -85,7 +95,7 @@ public class Translator{
                 }
                 for (String origin : dictionnaryMed.keySet()) {
                     counter++;
-                    if (trad.toString().equals(origin)) {
+                    if (trad.toString().equals(removeAccent(origin))) {
                         lineresult.append(dictionnaryMed.get(origin)).append(" ");
 //                        expression = expression.substring(j, expression.length());
                         isTranslated = true;
@@ -105,6 +115,11 @@ public class Translator{
 
 
         return result;
+    }
+    public static String removeAccent(String s){
+        String strTemp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(strTemp).replaceAll("");
     }
 
     public static boolean isNumberGreaterThan20(String num){

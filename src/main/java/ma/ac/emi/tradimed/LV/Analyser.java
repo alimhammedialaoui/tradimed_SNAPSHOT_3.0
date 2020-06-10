@@ -2,7 +2,8 @@ package ma.ac.emi.tradimed.LV;
 
 import safar.machine_learning.levenshtein.factory.LevenshteinFactory;
 import safar.machine_learning.levenshtein.interfaces.ILevenshtein;
-
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 import java.io.IOException;
 import java.util.*;
 
@@ -22,23 +23,41 @@ public class Analyser {
             int isCorrect = 0;
             String array= file.getFile().getListeWord().toString();
             for (String e : file.getFile().getListeWord()) {
-                int distance = safarLevenshteinTest(word, e);
+                int distance = safarLevenshteinTest(removeAccent(word).toLowerCase(),removeAccent(e).toLowerCase());
                 if (distance == 0) {
                     isCorrect = 1;
                 } else {
-                    if ((distance == 1  ) && cpt>0) {
+                    if ((distance == 1 || distance==2 ) && cpt>0) {
                         propositions.add(e);
                         cpt--;
                     }
                 }
             }
-            if (isCorrect == 0 && propositions.size()!=0) {
+            if (isCorrect == 0 && propositions.size()!=0 && !keyfound(removeAccent(word).toLowerCase(),path,file)) {
                 map.put(word, propositions);
 
                 listeErrones.add(word);
             }
         }
         return map;
+    }
+
+    public static String removeAccent(String s){
+        String strTemp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(strTemp).replaceAll("");
+    }
+
+
+    public static boolean keyfound(String e,String path,ReadFile file) throws IOException {
+        file.openFile(path);
+        file.readFile();
+        file.closeFile();
+        List<String> liste= file.getFile().getListeWord();
+        for(String chaine:liste){
+            if(e.equals(chaine.toLowerCase())) return true;
+        }
+        return false;
     }
 
 
