@@ -10,6 +10,7 @@ import java.util.*;
 public class Analyser {
 
     public static HashMap<String ,List<String >> listeErrone(String sequence, ReadFile file, String path) throws IOException {
+        List<String> specialCharacters = Arrays.asList(")","-","+","%","/",",");
         List<String> listeErrones = new ArrayList<String>();
         HashMap<String ,List<String >> map = new HashMap<String, List<String>>();
         String mots[] = sequence.split("\\s");
@@ -34,9 +35,11 @@ public class Analyser {
                 }
             }
             if (isCorrect == 0 && propositions.size()!=0 && !keyfound(removeAccent(word).toLowerCase(),path,file)) {
-                map.put(word, propositions);
+                if(!specialCharacters.contains(word)){
+                    map.put(word, propositions);
+                    listeErrones.add(word);
+                }
 
-                listeErrones.add(word);
             }
         }
         return map;

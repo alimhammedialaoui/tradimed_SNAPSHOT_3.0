@@ -17,7 +17,9 @@
                 <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
                 </li>
                 <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
-                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <hr style="color: white">
+                <li><a th:href="@{/about}">About <i class="fas fa-info" style="width: 22.5px;float: right;font-size: 22px;"></i></a></li>
+                <li><a th:href="@{/team}">Credits <i class="fas fa-users"></i></a></li>
                 <li><a th:href="@{/contact}">Contact and support <i style="width: 28px"
                                                                     class="fas fa-envelope-open"></i></a></li>
             </ul>
@@ -36,7 +38,8 @@
             <div class="main ">
                 <div class="header ">
                     <div style="position: relative">
-                        <img src="https://i.ibb.co/CmRMFZR/poster2.png"/>
+<!--                        <img src="https://i.ibb.co/CmRMFZR/poster2.png"/>-->
+                        <img th:src="@{images/poster2.webp}"/>
                         <h1 style="position: absolute;margin-top: 55px">Welcome to the home page of Tradimed !</h1>
                     </div>
 
@@ -57,7 +60,8 @@
                 </div>
                 <div class="functionalities">
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img src="https://i.ibb.co/3FTJ5ZL/translate.png">
+<!--                        <img src="https://i.ibb.co/3FTJ5ZL/translate.png">-->
+                        <img th:src="@{images/translate.png}">
                         <div class="text1">
                             <div class="text-content">
                                 <h1 class="title">Translator</h1>
@@ -70,7 +74,8 @@
                         </svg>
                     </div>
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img src="https://i.ibb.co/VDV8LJy/icon.png">
+<!--                        <img src="https://i.ibb.co/VDV8LJy/icon.png">-->
+                        <img th:src="@{images/icon.png}">
                         <div class="text2">
                             <div class="text-content">
                                 <h1 class="title">Spell Checker</h1>
@@ -83,7 +88,8 @@
                         </svg>
                     </div>
                     <div class="card" onclick="this.classList.toggle('expanded')"><br>
-                        <img src="https://i.ibb.co/L9gLBwf/pdf.png">
+<!--                        <img src="https://i.ibb.co/L9gLBwf/pdf.png">-->
+                        <img th:src="@{images/pdf.png}">
                         <div class="text3">
                             <div class="text-content">
                                 <h1 class="title">Generate PDF</h1>
@@ -102,15 +108,15 @@
         </div>
         <div class="footer">
             <div class="flex">
-                <div class="flex-column">
-                    <a th:href="@{/team}"><span>About us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/team}"><span>About us</span></a>-->
+<!--                </div>-->
                 <div class="flex-column">
                     All Rights Reserved ©
                 </div>
-                <div class="flex-column">
-                    <a th:href="@{/contact}"><span>Contact us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/contact}"><span>Contact us</span></a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

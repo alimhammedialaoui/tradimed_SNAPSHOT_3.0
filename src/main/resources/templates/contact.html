@@ -18,7 +18,9 @@
                 <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
                 </li>
                 <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
-                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <hr style="color: white">
+                <li><a th:href="@{/about}">About <i class="fas fa-info" style="width: 22.5px;float: right;font-size: 22px;"></i></a></li>
+                <li><a th:href="@{/team}">Credits <i class="fas fa-users"></i></a></li>
                 <li><a class="active" th:href="@{/contact}">Contact and support <i style="width: 28px"
                                                                                    class="fas fa-envelope-open"></i></a>
                 </li>
@@ -38,14 +40,16 @@
                     </div>
                 </div>
                 <div class="description">
-                    <div class="text">We're here to Help you. Feel free to contact the mail below for support.
+                    <div class="text">In order to improve this application, please notify us of any error and share your
+                        suggestions with us by sending us a message at the following addresses:
                     </div>
                 </div>
                 <div class="contact-card">
                     <div class="contact">
                         <div class="name-contact"><b>BOUZOUBAA Karim</b></div>
                         <div class="mail-contact"><a href="mailto:ouzoubaa@emi.ac.ma">bouzoubaa@emi.ac.ma</a></div>
-                        <div class="mail-contact"><a href="mailto:karimbouzoubaa@yahoo.com">karimbouzoubaa@yahoo.com</a></div>
+                        <div class="mail-contact"><a href="mailto:karimbouzoubaa@yahoo.com">karimbouzoubaa@yahoo.com</a>
+                        </div>
                     </div>
                 </div>
                 <!--                <div class="row">-->
@@ -80,15 +84,15 @@
             </div>
             <div class="footer">
                 <div class="flex">
-                    <div class="flex-column">
-                        <a th:href="@{/team}"><span>About us</span></a>
-                    </div>
+                    <!--                    <div class="flex-column">-->
+                    <!--                        <a th:href="@{/team}"><span>About us</span></a>-->
+                    <!--                    </div>-->
                     <div class="flex-column">
                         All Rights Reserved ©
                     </div>
-                    <div class="flex-column">
-                        <a th:href="@{/contact}"><span>Contact us</span></a>
-                    </div>
+                    <!--                    <div class="flex-column">-->
+                    <!--                        <a th:href="@{/contact}"><span>Contact us</span></a>-->
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>

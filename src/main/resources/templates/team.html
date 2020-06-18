@@ -15,10 +15,11 @@
         <nav>
             <ul class="nav">
                 <li><a th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
-                <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
-                </li>
+                <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i></a></li>
                 <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
-                <li><a class="active" th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <hr style="color: white">
+                <li><a th:href="@{/about}">About <i class="fas fa-info" style="width: 22.5px;float: right;font-size: 22px;"></i></a></li>
+                <li><a class="active" th:href="@{/team}">Credits <i class="fas fa-users"></i></a></li>
                 <li><a th:href="@{/contact}">Contact and support <i style="width: 28px"
                                                                     class="fas fa-envelope-open"></i></a></li>
             </ul>
@@ -32,14 +33,13 @@
             <div class="main">
                 <div class="header ">
                     <img src="https://i.ibb.co/Nr6vJqc/team.jpg"/>
-                    <h1>Team Members</h1>
+                    <h1>Credits</h1>
                 </div>
                 <div class="description">
                     <div class="text">This <a th:href="@{/welcome}" style="color: dodgerblue"><b>Web</b></a> application and also <a
                             th:href="@{/download}" style="color: dodgerblue"><b>Android</b></a> application are made
-                        in the Mohammdia School of Engineers during the 4th semester 2020 in the course of Integrated
-                        project, by the students of the Computer Sciences engineering. The application was framed by
-                        Mr.BOUZOUBAA Karim M.Sc, Ph.D Full professor.
+                        in the Mohammdia School of Engineers by the engineers students Ali MHAMMEDI ALAOUI & Oussama SIWANE under the supervision of the Professor at the Mohammdia School of Engineers
+                        Karim BOUZOUBAA. The scientific content of the medical terms and their translation has been validated by Dr Adnane TAZI.
                     </div>
                 </div>
                 <div class="members">
@@ -65,15 +65,15 @@
         </div>
         <div class="footer">
             <div class="flex">
-                <div class="flex-column">
-                    <a th:href="@{/team}"><span>About us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/team}"><span>About us</span></a>-->
+<!--                </div>-->
                 <div class="flex-column">
                     All Rights Reserved ©
                 </div>
-                <div class="flex-column">
-                    <a th:href="@{/contact}"><span>Contact us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/contact}"><span>Contact us</span></a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

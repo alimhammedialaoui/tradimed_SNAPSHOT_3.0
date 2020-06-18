@@ -24,7 +24,9 @@
                         class="fas fa-language"></i></a>
                 </li>
                 <li><a th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
-                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <hr style="color: white">
+                <li><a th:href="@{/about}">About <i class="fas fa-info" style="width: 22.5px;float: right;font-size: 22px;"></i></a></li>
+                <li><a th:href="@{/team}">Credits <i class="fas fa-users"></i></a></li>
                 <li><a th:href="@{/contact}">Contact and support <i style="width: 28px"
                                                                     class="fas fa-envelope-open"></i></a></li>
             </ul>
@@ -39,6 +41,7 @@
                 <div class="header ">
                     <div style="position: relative">
                         <img src="https://i.ibb.co/KVjtT0w/notes.jpg"/>
+<!--                        <img th:src="@{images/notes.jpg}"/>-->
                         <h1 style="position: absolute;margin-top: 55px">Prescription tools</h1>
                     </div>
                 </div>
@@ -118,7 +121,7 @@
                             </div>
                             <div class="col-75">
 
-                                <textarea id="correctedText" th:field="*{correctedText}" placeholder="Corrected text.."
+                                <textarea id="correctedText" th:field="*{correctedText}" placeholder="Referentiel text.."
                                           style="height:200px" spellcheck="false"></textarea>
                             </div>
                         </div>
@@ -142,8 +145,8 @@
 
                         </div>
                         <button id="button_copy" name="button_copy" type="button"
-                                onclick="copyText();" download><i
-                                class="fas fa-copy"></i>Copy To ClipBoard
+                                onclick="saveTextAsFile();" download><i
+                                class="fas fa-save"></i>Save text as File
                         </button>
 
                     </div>
@@ -153,15 +156,15 @@
         </div>
         <div class="footer">
             <div class="flex">
-                <div class="flex-column">
-                    <a th:href="@{/team}"><span>About us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/team}"><span>About us</span></a>-->
+<!--                </div>-->
                 <div class="flex-column">
                     All Rights Reserved ©
                 </div>
-                <div class="flex-column">
-                    <a th:href="@{/contact}"><span>Contact us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/contact}"><span>Contact us</span></a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
@@ -169,9 +172,9 @@
 </body>
 <script type="text/javascript">
 
-    const URL = "http://arabic.emi.ac.ma:8080/tradimed"
+    //const URL = "http://arabic.emi.ac.ma:8080/tradimed"
     //const URL ="http://8675acfcd0a9.ngrok.io"
-    //const URL="http://localhost:8081"
+    const URL="http://localhost:8081"
 
     function setWordOrder(e) {
         if (e.key === " ") {
@@ -197,7 +200,7 @@
             lvText: '',
             translatedText: '',
         }
-        console.log(document.getElementById("originalText").value)
+        //console.log(document.getElementById("originalText").value)
         let responseTrans = await fetch(trans, {
             method: 'POST',
             headers: {
@@ -315,6 +318,23 @@
 
 
     /////////////sumbit LV/////////
+    function deleteOcc(liste){
+        for(let k=0;k<liste.length;k++){
+            for(let i=0; i<liste.length; i++){
+                const e = liste[i];
+                for(let j=0; j<liste.length; j++){
+                    if(j!==i){
+                        if(e.includes(liste[j])){
+                            liste.splice(j,1)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
     async function thissumbitLV() {
         document.getElementsByClassName("sk-fading-circle")[0].style.display="unset"
         const newAction = URL + "/restApi/lv"
@@ -324,7 +344,7 @@
             lvText: '',
             translatedText: ''
         }
-        console.log(prescription)
+        //console.log(prescription)
         let response = await fetch(newAction, {
             method: 'POST',
             headers: {
@@ -333,10 +353,10 @@
             body: JSON.stringify(prescription)
         })
         let result = await response.json()
-        console.log("result="+result.lvText)
+        //console.log("result="+result.lvText)
         let textlv = result.lvText
         let json = JSON.parse(textlv)
-        console.log(json)
+        //console.log(json)
         let text = ""
         let keys = []
         for (let key in json) {
@@ -348,13 +368,14 @@
                 text = text + key + " --> "
                 let array = json[key].slice(1, json[key].length - 1)
                 let prop = array.split(",")
+                //console.log(prop)
+                deleteOcc(prop)
+
                 for (let index in prop) {
                     text = text + " " + prop[index]
                 }
                 text = text + "\n"
             }
-
-
 
         }
 
@@ -376,6 +397,9 @@
     }
 
     function changeHandler() {
+        document.getElementById("correctedText").value=""
+        document.getElementById("translatedText").value=""
+
         if (document.getElementById("originalText").value !== "") {
             thissumbitLV()
         }
@@ -391,7 +415,46 @@
         }
     }
 
+    /////////////////////////////////////////////////Save file as/////////////////////////////////////////////////////
 
+
+
+    function saveTextAsFile()
+    {
+        var textAr = document.getElementById("translatedText").value
+        var textFr = document.getElementById("correctedText").value
+        var textToWrite ="French presricption :\n"+textFr +"\n ------------------------\n الوصفة\n"+textAr
+        var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+        // var textFileAsBlob = new Blob([textToWrite], {type:'text/vnd.ms-word;charset=utf-8'});
+        var fileNameToSaveAs = "Prescription"
+
+        var downloadLink = document.createElement("a");
+
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null)
+        {
+            // Chrome allows the link to be clicked
+            // without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        }
+        else
+        {
+            // Firefox requires the link to be added to the DOM
+            // before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+        }
+
+        downloadLink.click();
+    }
+
+    function destroyClickedElement(event)
+    {
+        document.body.removeChild(event.target);
+    }
 
 
 

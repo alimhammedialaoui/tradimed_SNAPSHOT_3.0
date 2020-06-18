@@ -40,6 +40,11 @@ public class DemoController {
         return "team";
     }
 
+    @GetMapping("/about")
+    public String aboutPage(){
+        return "about";
+    }
+
     /*@GetMapping("/contact")
     public String contactPage(){
         return "contact";

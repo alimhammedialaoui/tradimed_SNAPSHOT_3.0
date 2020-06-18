@@ -11,13 +11,16 @@
     <div class="sidebar">
         <!--        <img src="https://i.ibb.co/L150TvG/logo-medical.jpg">-->
         <img src="https://i.ibb.co/2Z2n6YF/Logo-App-Final.png" style="width: 230px;height: auto;margin:0 auto 0 auto;">
+<!--        <img th:src="@{images/LogoAppFinal.png}" style="width: 230px;height: auto;margin:0 auto 0 auto;" alt="logo">-->
         <nav>
             <ul class="nav">
                 <li><a th:href="@{/welcome}">Home <i class="fas fa-book-open"></i></a></li>
                 <li><a th:href="@{/prescriptions/showTools}">Prescription tools <i class="fas fa-language"></i> </a>
                 </li>
                 <li><a class="active" th:href="@{/download}">Downloads <i class="fab fa-android"></i></a></li>
-                <li><a th:href="@{/team}">Team Members <i class="fas fa-users"></i></a></li>
+                <hr style="color: white">
+                <li><a th:href="@{/about}">About <i class="fas fa-info" style="width: 22.5px;float: right;font-size: 22px;"></i></a></li>
+                <li><a th:href="@{/team}">Credits <i class="fas fa-users"></i></a></li>
                 <li><a th:href="@{/contact}">Contact and support <i style="width: 28px"
                                                                     class="fas fa-envelope-open"></i></a></li>
             </ul>
@@ -32,6 +35,7 @@
                 <div class="header ">
                     <div style="position: relative">
                         <img src="https://i.ibb.co/5sXR3x2/mobile.jpg"/>
+<!--                        <img th:src="@{images/mobile.jpg}" alt="">-->
                         <h1 style="position: absolute;margin-top: 55px">Downloads</h1>
                     </div>
                 </div>
@@ -42,10 +46,12 @@
                 </div>
                 <div class="flex">
                     <div class="flex-column">
-                        <img id="devices" src="https://i.ibb.co/HD9Y0q9/devices.png">
+<!--                        <img id="devices" src="https://i.ibb.co/HD9Y0q9/devices.png">-->
+                        <img id="devices" th:src="@{images/devices.png}" alt="">
                         <div class="playstore_ic">
                             <a href="#">
-                                <img id="available" src="https://i.ibb.co/NZpr305/en-badge-web-generic.png">
+                               <a href="https://mega.nz/file/TS40RaoT#q9b0xQPZgBFueaYKsp1-8rFElmD8wTJDHLze7IPpFqQ"><img id="available" src="https://i.ibb.co/NZpr305/en-badge-web-generic.png"></a>
+<!--                                <img id="available" th:src="@{images/en_badge_web_generic.png}">-->
                             </a>
 
                         </div>
@@ -58,7 +64,8 @@
                     <div class="flex-column">
                         <div style="text-align: center">You can also scan this QR code to <span>download it</span></div>
                         <div class="qr_container">
-                            <img id="qr" src="https://i.ibb.co/CWFYFs1/qrcode.png">
+<!--                            <img id="qr" th:src="@{images/qrcode.png}">-->
+                            <img id="qr" th:src="@{images/Unitag_QRCode_1592400199537.png}">
                         </div>
                     </div>
                 </div>
@@ -66,15 +73,15 @@
         </div>
         <div class="footer">
             <div class="flex">
-                <div class="flex-column">
-                    <a th:href="@{/team}"><span>About us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/team}"><span>About us</span></a>-->
+<!--                </div>-->
                 <div class="flex-column">
                     All Rights Reserved ©
                 </div>
-                <div class="flex-column">
-                    <a th:href="@{/contact}"><span>Contact us</span></a>
-                </div>
+<!--                <div class="flex-column">-->
+<!--                    <a th:href="@{/contact}"><span>Contact us</span></a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

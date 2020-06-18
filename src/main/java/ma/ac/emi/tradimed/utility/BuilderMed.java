@@ -21,8 +21,22 @@ public class BuilderMed {
                 List<String > term = Arrays.asList(line.split(cvsSplitBy));
                 String ligne =term.toString();
                 List<String> firstColumn = Arrays.asList(term.get(0).split(" "));
-                String firstWord = firstColumn.get(0);
-                dictionary.put(firstWord,term.get(term.size()-1));
+                StringBuilder nommedicament = new StringBuilder();
+                for(String e : firstColumn){
+                    try{
+                        Double.parseDouble(e);
+                        break;
+                    } catch (NumberFormatException numberFormatException) {
+                        if(e.contains(",")){
+                            break;
+                        }
+                        nommedicament.append(e).append(" ");
+                    }
+
+                }
+                //nommedicament.append(firstColumn.get(0));
+                //System.out.println(nommedicament);
+                dictionary.put(nommedicament.toString().toLowerCase(),term.get(term.size()-1));
             }
         } catch (IOException e) {
             e.printStackTrace();

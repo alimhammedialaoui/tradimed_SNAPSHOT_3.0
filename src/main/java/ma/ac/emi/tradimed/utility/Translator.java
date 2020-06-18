@@ -1,40 +1,27 @@
 package ma.ac.emi.tradimed.utility;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
+import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.text.Normalizer;
 import java.util.regex.Pattern;
 
-public class Translator{
+public class Translator {
 
-    Logger loggerFactory= LoggerFactory.getLogger(Translator.class);
-
-
-    private final Map<String, String> dictionaryFr;
     private final Map<String, String> dictionaryAr;
     private final Map<String,String> dictionnaryMed;
 
-    public Translator(Map<String, String> dictionaryFr, Map<String, String> dictionaryAr, Map<String, String> dictionnaryMed) {
-        this.dictionaryFr = dictionaryFr;
+    public Translator(Map<String, String> dictionaryAr, Map<String, String> dictionnaryMed) {
+
         this.dictionaryAr = dictionaryAr;
         this.dictionnaryMed = dictionnaryMed;
     }
-
-
-
 
 
     public String getTranslation(String entry) {
 
 
         String result = "";
-        String array = "";
-        String test = "";
         boolean isTranslated = false;
         boolean endsWithComma=false;
 
@@ -43,22 +30,18 @@ public class Translator{
         for (String ligne : elementsParent) {
             String line= removeAccent(ligne).replaceAll("\\s+"," ");
 
-            List<List<Integer>> list = new ArrayList<>();
-            List<Integer> listIndex = new ArrayList<>();
             StringBuilder lineresult = new StringBuilder();
             StringBuilder trad = new StringBuilder();
             List<String> mots = Arrays.asList(line.split("\\s"));
-            String expression = String.join(" ", mots);
-            list = isNumber(expression);
-            listIndex = makeIndexList(list);
             for (int j = 0; j < mots.size(); j++) {
+                if(printSpecialChar(mots.get(j)).get(1).equals("true")){
+                    lineresult.append(printSpecialChar(mots.get(j)).get(0)).append(" ");
+                    continue;
+                }
                 isTranslated = false;
                 endsWithComma=false;
                 trad.append(removeAccent(mots.get(j)));
-                //loggerFactory.info("Chaine a traduire : "+trad);
-                int counter = 0;
                 for (String origin : dictionaryAr.keySet()) {
-                    counter++;
                     if (trad.toString().toLowerCase().equals(removeAccent(origin).toLowerCase())) {
                         lineresult.append(dictionaryAr.get(origin));
                         if(endsWithComma){
@@ -66,15 +49,19 @@ public class Translator{
                         }else{
                             lineresult.append(" ");
                         }
-//                        expression = expression.substring(j, expression.length());
                         isTranslated = true;
                         break;
                     }else if(isNumberGreaterThan20(trad.toString())){
-                        lineresult.append(trad.toString()).append(" ");
+                        lineresult.append(trad.toString());
                         isTranslated=true;
+                        if(endsWithComma){
+                            lineresult.append("،").append(" ");
+                            break;
+                        }
+                        lineresult.append(" ");
                         break;
                     }else if(trad.toString().startsWith(",")){
-                        lineresult.append(trad.toString()).append("، ");
+                        lineresult.append("،").append(trad.substring(0,trad.length()-1)).append(" ");
                         isTranslated=true;
                         break;
                     }else if(trad.toString().endsWith(",")){
@@ -91,13 +78,19 @@ public class Translator{
                         lineresult.append("،");
                         isTranslated=true;
                         break;
+                    }else if(isCommaNumber(trad.toString())){
+                        lineresult.append(trad).append(" ");
+                        isTranslated=true;
+                        break;
                     }
                 }
                 for (String origin : dictionnaryMed.keySet()) {
-                    counter++;
-                    if (trad.toString().equals(removeAccent(origin))) {
+                    StringBuilder tradMed = new StringBuilder();
+                    if(j<mots.size()-1) {
+                        tradMed.append(trad).append(" ").append(mots.get(j+1));
+                    }
+                    if ((trad+" ").toLowerCase().equals(removeAccent(origin).toLowerCase()) || tradMed.toString().toLowerCase().equals(removeAccent(origin).toLowerCase()+" ") ) {
                         lineresult.append(dictionnaryMed.get(origin)).append(" ");
-//                        expression = expression.substring(j, expression.length());
                         isTranslated = true;
                         break;
                     }
@@ -127,52 +120,33 @@ public class Translator{
         if(num==null) return false;
         try{
             int i=Integer.parseInt(num);
-            if(i>=20) isGreater=true;
+            if(i>=3) isGreater=true;
         } catch (NumberFormatException e) {
             return false;
         }
         return isGreater;
     }
 
-
-    private static List<List<Integer>> isNumber(String line) {
-        int index;
-        int length;
-        int i = 0;
-
-        List<List<Integer>> table = new ArrayList<>();
-        String[] tableau = line.split("\\s");
-        while (i < tableau.length) {
-            List<Integer> list = new ArrayList<Integer>();
-            int size = tableau[i].length();
-            try {
-                Integer.parseInt(tableau[i]);
-            } catch (NumberFormatException e) {
-
-                i++;
-                continue;
-            }
-
-            index = i;
-            length = size;
-            list.add(Integer.parseInt(tableau[i]));
-            list.add(index);
-            list.add(length);
-            i++;
-            table.add(list);
-        }
-
-        return table;
+    private boolean isCommaNumber(String s){
+        return s.contains(",");
     }
 
-
-    private static List<Integer> makeIndexList(List<List<Integer>> lists) {
-        List<Integer> listindex = new ArrayList<>();
-        for (List<Integer> list : lists) {
-            listindex.add(list.get(1));
+    private List printSpecialChar(String entry){
+        List<String> specialCharacters = Arrays.asList(")","-","+","%","/",":");
+        if(entry.length()==1 && specialCharacters.contains(entry) ){
+            return Arrays.asList(entry,"true");
+        }
+        if(entry.length()>=2) {
+            String specialChar = entry.substring(entry.length()-1);
+            if(specialCharacters.contains(specialChar)){
+                if(specialChar.equals(")")){
+                    return Arrays.asList(entry.substring(0,entry.length()-1)+")","true");
+                }
+                return Arrays.asList(entry.substring(0,entry.length()-1)+specialChar,"true");
+            }
         }
 
-        return listindex;
+        return Arrays.asList(entry,"false");
     }
 
 }
